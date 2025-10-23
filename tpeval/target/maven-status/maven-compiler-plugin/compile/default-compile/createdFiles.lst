@@ -1,0 +1,6 @@
+fr\univtours\polytech\tpeval\model\BorrowedList.class
+fr\univtours\polytech\tpeval\controller\BorrowServlet.class
+fr\univtours\polytech\tpeval\model\Library.class
+fr\univtours\polytech\tpeval\controller\CheckoutServlet.class
+fr\univtours\polytech\tpeval\controller\CatalogServlet.class
+fr\univtours\polytech\tpeval\model\Book.class
