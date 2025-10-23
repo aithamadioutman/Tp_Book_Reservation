@@ -4,21 +4,42 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @class BorrowedList
+ * @brief Représente la liste des livres empruntés par un utilisateur.
+ *
+ * Cette classe gère la collection de livres empruntés, leur ajout,
+ * leur suppression (retour) ainsi que le calcul du coût total mensuel
+ * selon le format du livre.
+ */
 public class BorrowedList implements Serializable {
-    private List<Book> borrowedBooks = new ArrayList<>();
-    private static final long serialVersionUID = 1L;
 
+    /** Liste des livres actuellement empruntés. */
+    private List<Book> borrowedBooks = new ArrayList<>();
+
+    /**
+     * @brief Ajoute un livre à la liste des emprunts.
+     * @param book Livre à ajouter.
+     */
     public void addBook(Book book) {
-        
-        // Logique : ajoute la référence du livre emprunté à la liste de l'utilisateur
-        // Note: L'état de Book (copies disponibles) est géré par la logique métier/controller.
         borrowedBooks.add(book);
     }
     
+    /**
+     * @brief Retourne (supprime) un livre en fonction de son ISBN.
+     * @param isbn Code ISBN du livre à retourner.
+     */
     public void returnBook(String isbn) {
         borrowedBooks.removeIf(b -> b.getIsbn().equals(isbn));
     }
     
+    /**
+     * @brief Calcule le coût total mensuel des livres empruntés.
+     * @details
+     * - Livre physique : 10 €
+     * - Livre en ligne : 5 €
+     * @return Montant total du coût mensuel.
+     */
     public double calculateTotalCost() {
         double total = 0.0;
         for (Book book : borrowedBooks) {
@@ -31,15 +52,23 @@ public class BorrowedList implements Serializable {
         return total;
     }
     
-    // --- Getters et Setters ---
+    /**
+     * @return La liste complète des livres empruntés.
+     */
     public List<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
     
+    /**
+     * @return Le nombre total de livres empruntés.
+     */
     public int getBookCount() {
         return borrowedBooks.size();
     }
     
+    /**
+     * @brief Vide complètement la liste des livres empruntés.
+     */
     public void clear() {
         borrowedBooks.clear();
     }

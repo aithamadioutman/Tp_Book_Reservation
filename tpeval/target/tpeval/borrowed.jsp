@@ -13,7 +13,7 @@
     
 
     <%-- 2. Récupérer l'objet BorrowedList de la session. SESSION_KEY est "borrowedList" --%>
-    <c:set var="borrowedList" value="${requestScope.borrowedList != null ? requestScope.borrowedList : sessionScope.borrowedList}" />
+    <c:set var="borrowedList" value="${sessionScope.borrowedList}" />
 
     
     <%-- 3. Afficher le message 'vide' si l'objet n'existe pas OU s'il n'a pas de livres --%>
