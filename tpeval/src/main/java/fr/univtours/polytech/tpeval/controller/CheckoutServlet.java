@@ -27,7 +27,7 @@ import java.io.IOException;
 @WebServlet("/checkout")
 public class CheckoutServlet extends HttpServlet {
 
-    /** Clé de session utilisée pour stocker la liste des livres empruntés. */
+    /** Cle de session utilisee pour stocker la liste des livres empruntes. */
     private static final String SESSION_KEY = "borrowedList";
 
     /** Nombre maximum de livres qu'un utilisateur peut emprunter. */
@@ -51,7 +51,7 @@ public class CheckoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false); ///< Récupère la session sans en créer une nouvelle.
+        HttpSession session = request.getSession(false);
         BorrowedList borrowedList = null;
 
         if (session != null) {
@@ -65,17 +65,17 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // Applique la règle métier : nombre maximum de livres
+        //  nombre maximum de livres
         if (borrowedList.getBookCount() > MAX_BOOKS) {
             request.setAttribute("error",
                     "Erreur de validation : Vous ne pouvez pas emprunter plus de " + MAX_BOOKS + " livres.");
         } else {
-            // Calcule le coût total des livres empruntés
+            // Calcule le cout total des livres empruntés
             double totalCost = borrowedList.calculateTotalCost();
             request.setAttribute("totalCost", totalCost);
         }
 
-        // Redirection vers la page de validation (checkout.jsp)
+        // Redirection vers checkout.jsp
         request.getRequestDispatcher("/checkout.jsp").forward(request, response);
     }
 
@@ -97,15 +97,15 @@ public class CheckoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false); ///< Récupère la session si elle existe.
+        HttpSession session = request.getSession(false); 
         if (session != null) {
             // Supprime la liste d'emprunt
             session.removeAttribute(SESSION_KEY);
-            // Optionnel : session.invalidate();
+            
             request.setAttribute("message", "Votre commande a été confirmée. Votre session d'emprunt a été effacée.");
         }
 
-        // Redirige vers la page d'accueil après confirmation
+        // Redirige vers la page d'accueil index.jsp
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

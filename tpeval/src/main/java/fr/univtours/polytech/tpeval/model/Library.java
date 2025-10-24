@@ -18,7 +18,7 @@ public class Library {
     /** Catalogue global des livres, indexé par ISBN. */
     private static final ConcurrentHashMap<String, Book> catalog = new ConcurrentHashMap<>();
 
-    // ======= Bloc statique d'initialisation =======
+    // Bloc statique d'initialisation 
     static {
         catalog.put("1234567890", new Book("1234567890", "Java Programming", "John Doe", 3, "A guide to Java", "physical"));
         catalog.put("0987654321", new Book("0987654321", "Web Development", "Jane Smith", 2, "Learn web basics", "online"));

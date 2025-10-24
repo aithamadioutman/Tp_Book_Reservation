@@ -17,7 +17,6 @@
         <p style="color:red;">${error}</p>
         <p>Veuillez retourner certains livres pour continuer. <a href="${pageContext.request.contextPath}/borrowed">Retourner un livre</a></p>
     </c:if>
-
     <c:if test="${empty error and not empty borrowedList and borrowedList.bookCount > 0}">
         <table border="1">
             <thead>
@@ -47,11 +46,11 @@
         
         <p>Nombre total de livres empruntés : ${borrowedList.bookCount}</p>
 
-        <form action="${pageContext.request.contextPath}/checkout" method="post">
+        <form action="${pageContext.request.contextPath}/checkout" method="post" class="center-form">
             <button type="submit">Confirmer l'Emprunt et Finaliser</button>
         </form>
-
     </c:if>
+
     
     <c:if test="${empty borrowedList.borrowedBooks and not empty sessionScope.message}">
         <p style="color:green;">${message}</p>

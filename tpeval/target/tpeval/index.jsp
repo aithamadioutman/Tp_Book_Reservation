@@ -19,6 +19,6 @@
         <li><a href="${pageContext.request.contextPath}/checkout">Passer à la Page de Paiement</a></li>
     </ul>
     
-    <p>Architecture: MVC (Servlet: Controller, JSP/JSTL: View, JavaBeans: Model)</p>
+    
 </body>
 </html>

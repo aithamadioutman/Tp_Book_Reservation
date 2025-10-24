@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- 1. CORRECTION CRUCIALE : Utiliser l'URI JSTL pour Jakarta EE (Tomcat 10) --%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"  %> 
 <!DOCTYPE html>
 <html>
@@ -12,11 +11,11 @@
     <h1>Mes Livres Empruntés</h1>
     
 
-    <%-- 2. Récupérer l'objet BorrowedList de la session. SESSION_KEY est "borrowedList" --%>
+    <%-- 2. Recuperer l'objet BorrowedList de la session. SESSION_KEY est "borrowedList" --%>
     <c:set var="borrowedList" value="${sessionScope.borrowedList}" />
 
     
-    <%-- 3. Afficher le message 'vide' si l'objet n'existe pas OU s'il n'a pas de livres --%>
+    <%-- 3. Afficher le message vide si l'objet n'existe pas OU s'il n'a pas de livres --%>
     <c:if test="${empty borrowedList or empty borrowedList.borrowedBooks}">
         <p>Vous n'avez actuellement aucun livre emprunté.</p>
     </c:if>
@@ -40,7 +39,7 @@
             </thead>
             <tbody>
                 <c:forEach var="book" items="${borrowedList.borrowedBooks}">
-                    <%-- Calcul du coût selon le format --%>
+                    <%-- Calcul du cout selon le format --%>
                     <c:set var="cost" value="${book.format eq 'physical' ? 10 : 5}" />
                     <tr>
                         <td>${book.title}</td>

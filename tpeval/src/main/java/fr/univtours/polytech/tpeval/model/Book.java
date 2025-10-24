@@ -52,7 +52,7 @@ public class Book implements Serializable {
     }
     
     /**
-     * @brief Constructeur simplifié (par défaut 1 exemplaire, sans description).
+     * @brief Constructeur simplifié -> par défaut 1 exemplaire, sans description 
      * @param isbn Code ISBN unique.
      * @param title Titre du livre.
      * @param author Auteur du livre.
@@ -63,56 +63,56 @@ public class Book implements Serializable {
     }
     
     /**
-     * @brief Diminue le nombre d'exemplaires disponibles d'une unité.
+     * @brief Diminue le nombre d'exemplaires disponibles d'une unite
      */
     public void decreaseCopies() {
         if (availableCopies > 0) availableCopies--;
     }
     
     /**
-     * @brief Augmente le nombre d'exemplaires disponibles d'une unité.
+     * @brief Augmente le nombre d'exemplaires disponibles d'une unite
      */
     public void increaseCopies() {
         availableCopies++;
     }
 
-    // ======== GETTERS ========
+    //  getteurs 
 
-    /** @return Le code ISBN du livre. */
+    /** @return Le code ISBN du livre */
     public String getIsbn() { return isbn; }
 
     /** @return Le titre du livre. */
     public String getTitle() { return title; }
 
-    /** @return L'auteur du livre. */
+    /** @return L auteur du livre */
     public String getAuthor() { return author; }
 
-    /** @return Le nombre d'exemplaires disponibles. */
+    /** @return Le nombre d'exemplaires disponibles */
     public int getAvailableCopies() { return availableCopies; }
 
-    /** @return La description du livre. */
+    /** @return La description du livre */
     public String getDescription() { return description; }
 
-    /** @return Le format du livre (physique ou en ligne). */
+    /** @return Le format du livre ->physique ou en ligne  */
     public String getFormat() { return format; }
 
-    // ======== SETTERS ========
+    //  setteurs 
 
-    /** @param isbn Nouveau code ISBN du livre. */
+    /** @param isbn Nouveau code ISBN du livre */
     public void setIsbn(String isbn) { this.isbn = isbn; }
 
-    /** @param title Nouveau titre du livre. */
+    /** @param title Nouveau titre du livre */
     public void setTitle(String title) { this.title = title; }
 
-    /** @param author Nouvel auteur du livre. */
+    /** @param author Nouvel auteur du livre */
     public void setAuthor(String author) { this.author = author; }
 
-    /** @param availableCopies Nouveau nombre d'exemplaires disponibles. */
+    /** @param availableCopies Nouveau nombre d'exemplaires disponibles */
     public void setAvailableCopies(int availableCopies) { this.availableCopies = availableCopies; }
 
-    /** @param description Nouvelle description du livre. */
+    /** @param description Nouvelle description du livre */
     public void setDescription(String description) { this.description = description; }
 
-    /** @param format Nouveau format du livre. */
+    /** @param format Nouveau format du livre */
     public void setFormat(String format) { this.format = format; }
 }
