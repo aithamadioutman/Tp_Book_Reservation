@@ -1,0 +1,169 @@
+\chapter{📘 Online Book Borrowing System }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{📘 Online Book Borrowing System@{📘 Online Book Borrowing System}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsection{\texorpdfstring{🧩 Practical Evaluation — Architecture of Information Systems}{🧩 Practical Evaluation — Architecture of Information Systems}}\label{md__r_e_a_d_m_e_autotoc_md1}
+{\bfseries{Environment\+:}} ~\newline
+
+\begin{DoxyItemize}
+\item IDE\+: Visual Studio Code ~\newline
+
+\item JDK\+: 11 ~\newline
+
+\item Build Tool\+: Maven ~\newline
+
+\item Server\+: Apache Tomcat 10 ~\newline
+
+\item Pattern\+: MVC (Model–\+View–\+Controller)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{🧠 Project Overview}{🧠 Project Overview}}\label{md__r_e_a_d_m_e_autotoc_md3}
+This mini web application simulates an {\bfseries{Online Book Borrowing / Reservation System}}, built using {\bfseries{Jakarta Servlets}}, {\bfseries{JSP/\+JSTL}}, and {\bfseries{Java\+Beans}}. ~\newline
+
+
+It follows the {\bfseries{MVC architecture}}\+:
+\begin{DoxyItemize}
+\item {\bfseries{Model\+:}} Java\+Beans (Book, Borrowed\+List, Library)
+\item {\bfseries{View\+:}} JSP pages using JSTL
+\item {\bfseries{Controller\+:}} Servlets (Catalog\+Servlet, Borrow\+Servlet, Checkout\+Servlet)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{🎯 Objectives}{🎯 Objectives}}\label{md__r_e_a_d_m_e_autotoc_md5}
+The system allows users to\+:
+
+
+\begin{DoxyItemize}
+\item 📚 View a catalog of available books ~\newline
+
+\item 📖 Reserve (borrow) books ~\newline
+
+\item 🧾 View the list of borrowed books ~\newline
+
+\item 🔁 Return borrowed books ~\newline
+
+\item 💳 Checkout and view total monthly cost ~\newline
+
+\end{DoxyItemize}
+
+\begin{quote}
+{\bfseries{Note\+:}} Data is stored in memory (no database connection). \end{quote}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{🏗️ Architecture Overview}{🏗️ Architecture Overview}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Layer  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Components  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+{\bfseries{Model}}  &{\ttfamily Book}, {\ttfamily Borrowed\+List}, {\ttfamily Library}  &Represents business entities and data logic  \\
+{\bfseries{View}}  &{\ttfamily index.\+jsp}, {\ttfamily catalog.\+jsp}, {\ttfamily borrowed.\+jsp}, {\ttfamily checkout.\+jsp}  &JSP pages that render data  \\
+{\bfseries{Controller}}  &{\ttfamily Catalog\+Servlet}, {\ttfamily Borrow\+Servlet}, {\ttfamily Checkout\+Servlet}  &Handle user requests and business flow  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{⚙️ Maven Configuration}{⚙️ Maven Configuration}}\label{md__r_e_a_d_m_e_autotoc_md9}
+{\bfseries{Group ID\+:}} {\ttfamily fr.\+univtours.\+polytech} ~\newline
+ {\bfseries{Artifact ID / Project name\+:}} {\ttfamily tpeval} ~\newline
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{🌐 URL Mapping}{🌐 URL Mapping}}\label{md__r_e_a_d_m_e_autotoc_md11}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Page  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}URL  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+Home  &{\ttfamily /tpeval/}  &Main entry point  \\
+Catalog  &{\ttfamily /tpeval/catalog}  &Displays available books  \\
+Reserve  &{\ttfamily /tpeval/reserve}  &Handles reservation actions  \\
+Borrowed  &{\ttfamily /tpeval/borrowed}  &Displays borrowed books list  \\
+Return  &{\ttfamily /tpeval/return}  &Handles returning of books  \\
+Checkout  &{\ttfamily /tpeval/checkout}  &Displays summary and clears session  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{💼 Business Logic}{💼 Business Logic}}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Each {\bfseries{Book}} has\+:
+\begin{DoxyItemize}
+\item {\ttfamily id} (ISBN)
+\item {\ttfamily title}
+\item {\ttfamily author}
+\item {\ttfamily available\+Copies}
+\item {\ttfamily description}
+\item {\ttfamily format} (physical / online)
+\end{DoxyItemize}
+\item {\bfseries{Pricing\+:}}
+\begin{DoxyItemize}
+\item Physical Book\+: {\bfseries{€10/month}}
+\item Online Book (PDF)\+: {\bfseries{€5/month}}
+\end{DoxyItemize}
+\item {\bfseries{Rules\+:}}
+\begin{DoxyItemize}
+\item Users cannot borrow when {\ttfamily available\+Copies == 0}.
+\item A user cannot borrow more than {\bfseries{2 books}} at once.
+\item After checkout confirmation, the session is cleared.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{🧩 Example Data}{🧩 Example Data}}\label{md__r_e_a_d_m_e_autotoc_md15}
+
+\begin{DoxyTable}{6}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}ISBN  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Title  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Author  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Available Copies  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Format  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  \\
+1234567890  &Java Programming  &John Doe  &3  &physical  &A guide to Java  \\
+0987654321  &Web Development  &Jane Smith  &2  &online  &Learn web basics  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{\texorpdfstring{🚀 How to Run the Project}{🚀 How to Run the Project}}\label{md__r_e_a_d_m_e_autotoc_md17}
+
+\begin{DoxyEnumerate}
+\item Open the project in {\bfseries{VS Code}} or {\bfseries{Eclipse}} ~\newline
+
+\item Run {\ttfamily mvn clean package} to build the WAR file ~\newline
+
+\item Deploy {\ttfamily tpeval.\+war} to {\bfseries{Tomcat 10}} ({\ttfamily webapps} folder) ~\newline
+
+\item Start the Tomcat server ~\newline
+
+\item Access \href{http://localhost:8080/tpeval}{\texttt{http\+://localhost\+:8080/tpeval}}
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysection{\texorpdfstring{🧾 Exercises Summary}{🧾 Exercises Summary}}\label{md__r_e_a_d_m_e_autotoc_md19}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Exercise  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Description  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Deliverable  \\
+1  &Display Book Catalog  &{\ttfamily /catalog}  \\
+2  &Manage Borrowed Books in Session  &Borrow persists  \\
+3  &Borrow/\+Return Servlets  &{\ttfamily /borrowed}  \\
+4  &Checkout Logic \& Summary  &{\ttfamily /checkout}  \\
+5  &Short Report  &PDF with browser screenshots  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{📄 Submission Notes}{📄 Submission Notes}}\label{md__r_e_a_d_m_e_autotoc_md21}
+
+\begin{DoxyItemize}
+\item Submit project {\ttfamily .zip} including {\ttfamily target/tpeval.\+war}
+\item Include a {\bfseries{short report (PDF)}} explaining your MVC design + screenshots
+\item Deadline\+: {\bfseries{October 26 at 22\+:00}}
+\item Late submissions or emailed work will not be accepted
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysection{\texorpdfstring{🚫 Academic Integrity}{🚫 Academic Integrity}}\label{md__r_e_a_d_m_e_autotoc_md23}
+Use of {\bfseries{Generative AI tools}} (Chat\+GPT, Copilot, Gemini, etc.) or code copied from Git\+Hub/external sources is {\bfseries{not authorized}}. ~\newline
+ Your implementation must reflect your {\bfseries{own understanding}} of the MVC pattern and Servlets/\+JSPs.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysection{\texorpdfstring{👨‍💻 Author}{👨‍💻 Author}}\label{md__r_e_a_d_m_e_autotoc_md25}
+{\bfseries{Name\+:}} Outman Aithamadi ~\newline
+ {\bfseries{Institution\+:}} Polytech Tours ~\newline
+ {\bfseries{Course\+:}} Architecture of Information Systems ~\newline
+ {\bfseries{Year\+:}} 2025 

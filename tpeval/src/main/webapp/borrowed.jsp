@@ -15,12 +15,10 @@
     <c:set var="borrowedList" value="${sessionScope.borrowedList}" />
 
     
-    <%-- 3. Afficher le message vide si l'objet n'existe pas OU s'il n'a pas de livres --%>
     <c:if test="${empty borrowedList or empty borrowedList.borrowedBooks}">
         <p>Vous n'avez actuellement aucun livre emprunté.</p>
     </c:if>
 
-    <%-- 4. Afficher le tableau UNIQUEMENT si l'objet existe ET contient des livres --%>
     <c:if test="${not empty borrowedList and not empty borrowedList.borrowedBooks}">
         <p>Nombre de livres empruntés : ${borrowedList.bookCount}</p>
     <c:forEach var="b" items="${borrowedList.borrowedBooks}">
@@ -39,7 +37,6 @@
             </thead>
             <tbody>
                 <c:forEach var="book" items="${borrowedList.borrowedBooks}">
-                    <%-- Calcul du cout selon le format --%>
                     <c:set var="cost" value="${book.format eq 'physical' ? 10 : 5}" />
                     <tr>
                         <td>${book.title}</td>
