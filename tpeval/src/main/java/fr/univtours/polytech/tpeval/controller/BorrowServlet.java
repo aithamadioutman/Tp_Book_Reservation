@@ -52,7 +52,7 @@ public class BorrowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(true); ///< Crée une session si elle n'existe pas encore.
+        HttpSession session = request.getSession(true); 
         BorrowedList borrowedList = (BorrowedList) session.getAttribute(SESSION_KEY);
 
         // Initialise la liste d’emprunt si nécessaire
